@@ -1,6 +1,6 @@
 # MultiSheet
 
-By default, SwiftUI views with multiple `.sheet` calls in the same body will only use the last one specified in the chain and ignore all the previous ones. 
+By default, SwiftUI views with multiple `.sheet` calls in the same body will only use the last one in the chain of modifiers and ignore all previous ones. 
 
 ```swift
 struct NoMultiSheetDemoView: View {
