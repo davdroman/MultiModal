@@ -24,3 +24,4 @@ jobs:
     - name: ${{ matrix.action }}
       run: |
         xcodebuild -sdk iphoneos -scheme MultiSheet clean ${{ matrix.action }} | xcpretty
+        exit ${PIPESTATUS[0]}
