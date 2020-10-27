@@ -1,5 +1,7 @@
 # MultiSheet
 
+![CI](https://github.com/davdroman/MultiSheet/workflows/CI/badge.svg)
+
 By default, SwiftUI views with multiple `.sheet` calls in the same body will only use the last one in the chain of modifiers and ignore all previous ones. 
 
 ```swift
