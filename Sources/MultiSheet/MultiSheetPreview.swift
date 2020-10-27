@@ -8,9 +8,9 @@ struct MultiSheetDemoView_Previews: PreviewProvider {
 
         var body: some View {
             VStack(spacing: 20) {
-                Button("Sheet A") { sheetAPresented = true }
-                Button("Sheet B") { sheetBPresented = true }
-                Button("Sheet C") { sheetCPresented = true }
+                Button("Sheet A") { self.sheetAPresented = true }
+                Button("Sheet B") { self.sheetBPresented = true }
+                Button("Sheet C") { self.sheetCPresented = true }
             }
             .multiSheet {
                 $0.sheet(isPresented: $sheetAPresented) { Text("Sheet A") }
@@ -27,9 +27,9 @@ struct MultiSheetDemoView_Previews: PreviewProvider {
 
         var body: some View {
             VStack(spacing: 20) {
-                Button("Sheet A") { sheetAPresented = true }
-                Button("Sheet B") { sheetBPresented = true }
-                Button("Sheet C") { sheetCPresented = true }
+                Button("Sheet A") { self.sheetAPresented = true }
+                Button("Sheet B") { self.sheetBPresented = true }
+                Button("Sheet C") { self.sheetCPresented = true }
             }
             .sheet(isPresented: $sheetAPresented) { Text("Sheet A") }
             .sheet(isPresented: $sheetBPresented) { Text("Sheet B") }
@@ -37,6 +37,7 @@ struct MultiSheetDemoView_Previews: PreviewProvider {
         }
     }
 
+    @ViewBuilder
     static var previews: some View {
         MultiSheetDemoView().previewDisplayName("With MultiSheet")
         NoMultiSheetDemoView().previewDisplayName("Without MultiSheet")

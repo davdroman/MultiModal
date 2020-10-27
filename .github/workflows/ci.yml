@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        action: [build, archive]
+    steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.5.0
+      with:
+        access_token: ${{ github.token }}
+    - name: Git Checkout
+      uses: actions/checkout@v2
+    - name: ${{ matrix.action }}
+      run: |
+        xcodebuild -sdk iphoneos -scheme MultiSheet clean ${{ matrix.action }} | xcpretty
+        exit ${PIPESTATUS[0]}
