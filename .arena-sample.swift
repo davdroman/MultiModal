@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiSheet
 
 struct MultiSheetDemoView_Previews: PreviewProvider {
     struct MultiSheetDemoView: View {
