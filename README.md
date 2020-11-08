@@ -2,6 +2,8 @@
 
 ![CI](https://github.com/davdroman/MultiSheet/workflows/CI/badge.svg)
 
+## Introduction
+
 By default, SwiftUI views with multiple `.sheet` calls in the same body will only use the last one in the chain of modifiers and ignore all previous ones. 
 
 ```swift
@@ -46,7 +48,13 @@ struct MultiSheetDemoView: View {
 }
 ```
 
-**Note:**
+## Try it out!
+
+MultiSheet supports [Arena](https://github.com/finestructure/Arena) to effortlessly test this library in a playground before you decide to take it for a spin in your own project.
+
+Simply [install Arena](https://github.com/finestructure/Arena#how-to-install-arena) and run `arena davdroman/MultiSheet` in your terminal.
+
+## Disclaimer
 
 MultiSheet does not enable "nested" sheets; it just enables multiple sheets appearing within a view body **one at a time**. For this reason, it's recommended that your sheets' presentation be dependant on a source of truth that ensures only one of them is presented at any given time.
 
