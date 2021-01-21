@@ -4,17 +4,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "MultiSheet",
+    name: "MultiModal",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "MultiSheet",
-            targets: ["MultiSheet"]
+            name: "MultiModal",
+            targets: ["MultiModal"]
         ),
     ],
     targets: [
-        .target(name: "MultiSheet"),
+        .target(name: "MultiModal"),
     ]
 )

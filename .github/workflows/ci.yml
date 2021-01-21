@@ -23,5 +23,5 @@ jobs:
       uses: actions/checkout@v2
     - name: ${{ matrix.action }}
       run: |
-        xcodebuild -sdk iphoneos -scheme MultiSheet clean ${{ matrix.action }} | xcpretty
+        xcodebuild -sdk iphoneos -scheme MultiModal clean ${{ matrix.action }} | xcpretty
         exit ${PIPESTATUS[0]}

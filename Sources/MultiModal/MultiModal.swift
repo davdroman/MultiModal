@@ -4,26 +4,28 @@
 import SwiftUI
 
 extension View {
-    /// Presents multiple sheets at the same view level.
+    /// Presents multiple modals (e.g. sheet, alert) at the same view level.
+    ///
+    /// Example:
     ///
     /// ```swift
-    /// .multiSheet {
+    /// .multiModal {
     ///     $0.sheet(isPresented: $sheetAPresented) { Text("Sheet A") }
     ///     $0.sheet(isPresented: $sheetBPresented) { Text("Sheet B") }
     ///     $0.sheet(isPresented: $sheetCPresented) { Text("Sheet C") }
     /// }
     /// ```
-    public func multiSheet(
-        @MultiSheetCollector _ sheets: (EmptyView) -> [AnyView]
+    public func multiModal(
+        @MultiModalCollector _ modals: (EmptyView) -> [AnyView]
     ) -> some View {
-        sheets(EmptyView()).reduce(AnyView(self)) { view, sheet in
-            AnyView(view.background(sheet))
+        modals(EmptyView()).reduce(AnyView(self)) { view, modal in
+            AnyView(view.background(modal))
         }
     }
 }
 
 @_functionBuilder
-public struct MultiSheetCollector {
+public struct MultiModalCollector {
     public static func buildBlock<V0: View>(
         _ v0: V0
     ) -> [AnyView] {
