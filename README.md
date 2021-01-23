@@ -54,6 +54,8 @@ MultiModal supports [Arena](https://github.com/finestructure/Arena) to effortles
 
 Simply [install Arena](https://github.com/finestructure/Arena#how-to-install-arena) and run `arena davdroman/MultiModal --platform ios` in your terminal.
 
+Alternatively, a demo Xcode project is provided in the [Demo](Demo) directory.
+
 ## Disclaimer
 
 MultiModal does not enable "nested" modals; it just enables multiple modals appearing within a view body **one at a time**. For this reason, it's recommended that your modal presentation be dependant on a source of truth that ensures only one of them is presented at any given time.
