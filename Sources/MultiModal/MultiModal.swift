@@ -1,5 +1,5 @@
 // Based off [https://stackoverflow.com/a/57873137].
-// TODO: check if this workaround is still required in SwiftUI 3.
+// TODO: check if this workaround is still required in iOS 16.
 
 import SwiftUI
 
