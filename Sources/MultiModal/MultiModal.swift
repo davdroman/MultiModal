@@ -24,8 +24,15 @@ extension View {
     }
 }
 
+#if compiler(>=5.4)
+@resultBuilder
+public struct MultiModalCollector {}
+#else
 @_functionBuilder
-public struct MultiModalCollector {
+public struct MultiModalCollector {}
+#endif
+
+extension MultiModalCollector {
     public static func buildBlock<V0: View>(
         _ v0: V0
     ) -> [AnyView] {
