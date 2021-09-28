@@ -12,12 +12,10 @@ let package = Package(
         .watchOS(.v6),
     ],
     products: [
-        .library(
-            name: "MultiModal",
-            targets: ["MultiModal"]
-        ),
+        .library(name: "MultiModal", targets: ["MultiModal"]),
     ],
     targets: [
         .target(name: "MultiModal"),
+        .testTarget(name: "MultiModalTests", dependencies: ["MultiModal"]),
     ]
 )
