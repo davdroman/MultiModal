@@ -6,22 +6,35 @@ on:
       - main
   pull_request:
     branches:
-      - main
+      - "**"
+  schedule:
+    - cron: '3 3 * * 2'  # 3:03 AM, every Tuesday
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: macOS-latest
+  macOS:
+    name: ${{ matrix.platform }} (Swift ${{ matrix.swift }})
+    runs-on: macos-11
     strategy:
+      fail-fast: false
       matrix:
-        action: [build, archive]
+        platform:
+          - iOS
+          - macOS
+          - tvOS
+          - watchOS
+        swift:
+          - 5.2
+          - 5.3
+          - 5.4
+          - 5.5
     steps:
-    - name: Cancel Previous Runs
-      uses: styfle/cancel-workflow-action@0.5.0
+    - uses: actions/checkout@v2
+    - uses: mxcl/xcodebuild@v1
       with:
-        access_token: ${{ github.token }}
-    - name: Git Checkout
-      uses: actions/checkout@v2
-    - name: ${{ matrix.action }}
-      run: |
-        xcodebuild -sdk iphoneos -scheme MultiModal clean ${{ matrix.action }} | xcpretty
-        exit ${PIPESTATUS[0]}
+        platform: ${{ matrix.platform }}
+        swift: ~${{ matrix.swift }}
+        warnings-as-errors: true

@@ -1,5 +1,5 @@
 // Based off [https://stackoverflow.com/a/57873137].
-// TODO: check if this workaround is still required in SwiftUI 3.
+// TODO: check if this workaround is still required in iOS 16.
 
 import SwiftUI
 
@@ -16,7 +16,7 @@ extension View {
     /// }
     /// ```
     public func multiModal(
-        @MultiModalCollector _ modals: (EmptyView) -> [AnyView]
+        @MultiModalBuilder _ modals: (EmptyView) -> [AnyView]
     ) -> some View {
         modals(EmptyView()).reduce(AnyView(self)) { view, modal in
             AnyView(view.background(modal))
@@ -24,8 +24,15 @@ extension View {
     }
 }
 
+#if compiler(>=5.4)
+@resultBuilder
+public struct MultiModalBuilder {}
+#else
 @_functionBuilder
-public struct MultiModalCollector {
+public struct MultiModalBuilder {}
+#endif
+
+extension MultiModalBuilder {
     public static func buildBlock<V0: View>(
         _ v0: V0
     ) -> [AnyView] {
