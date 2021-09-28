@@ -16,7 +16,7 @@ extension View {
     /// }
     /// ```
     public func multiModal(
-        @MultiModalCollector _ modals: (EmptyView) -> [AnyView]
+        @MultiModalBuilder _ modals: (EmptyView) -> [AnyView]
     ) -> some View {
         modals(EmptyView()).reduce(AnyView(self)) { view, modal in
             AnyView(view.background(modal))
@@ -26,13 +26,13 @@ extension View {
 
 #if compiler(>=5.4)
 @resultBuilder
-public struct MultiModalCollector {}
+public struct MultiModalBuilder {}
 #else
 @_functionBuilder
-public struct MultiModalCollector {}
+public struct MultiModalBuilder {}
 #endif
 
-extension MultiModalCollector {
+extension MultiModalBuilder {
     public static func buildBlock<V0: View>(
         _ v0: V0
     ) -> [AnyView] {
