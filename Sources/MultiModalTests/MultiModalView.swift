@@ -13,9 +13,9 @@ struct MultiModalView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Button("Sheet A") { sheetAPresented = true }
-            Button("Sheet B") { sheetBPresented = true }
-            Button("Sheet C") { sheetCPresented = true }
+            Button("Sheet A") { self.sheetAPresented = true }
+            Button("Sheet B") { self.sheetBPresented = true }
+            Button("Sheet C") { self.sheetCPresented = true }
         }
         .multiModal {
             $0.sheet(isPresented: $sheetAPresented) { Text("Sheet A") } // works
