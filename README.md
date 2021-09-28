@@ -56,7 +56,7 @@ MultiModal supports [Arena](https://github.com/finestructure/Arena) to effortles
 
 Simply [install Arena](https://github.com/finestructure/Arena#how-to-install-arena) and run `arena davdroman/MultiModal --platform ios` in your terminal.
 
-Alternatively, a demo Xcode project is provided in the [Demo](Demo) directory.
+Alternatively, a standalone demo Xcode Playground is also provided in this package.
 
 ## Disclaimer
 
