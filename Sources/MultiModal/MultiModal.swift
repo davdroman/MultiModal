@@ -1,5 +1,5 @@
 // Based off [https://stackoverflow.com/a/57873137].
-// TODO: check if this workaround is still required in iOS 16.
+// TODO: check if this workaround is still required in iOS 17.
 
 import SwiftUI
 
@@ -15,6 +15,14 @@ extension View {
     ///     $0.sheet(isPresented: $sheetCPresented) { Text("Sheet C") }
     /// }
     /// ```
+    #if compiler(>=5.7)
+    @inlinable
+    public func multiModal(
+        @MultiModalBuilder _ modals: (EmptyView) -> some View
+    ) -> some View {
+        self.background(modals(EmptyView()))
+    }
+    #else
     public func multiModal(
         @MultiModalBuilder _ modals: (EmptyView) -> [AnyView]
     ) -> some View {
@@ -22,17 +30,22 @@ extension View {
             AnyView(view.background(modal))
         }
     }
+    #endif
 }
 
-#if compiler(>=5.4)
 @resultBuilder
-public struct MultiModalBuilder {}
-#else
-@_functionBuilder
-public struct MultiModalBuilder {}
-#endif
+public struct MultiModalBuilder {
+    #if compiler(>=5.7)
+    @inlinable
+    public static func buildPartialBlock(first: some View) -> some View {
+        first
+    }
 
-extension MultiModalBuilder {
+    @inlinable
+    public static func buildPartialBlock(accumulated: some View, next: some View) -> some View {
+        accumulated.background(next)
+    }
+    #else
     public static func buildBlock<V0: View>(
         _ v0: V0
     ) -> [AnyView] {
@@ -72,4 +85,5 @@ extension MultiModalBuilder {
     ) -> [AnyView] {
         [AnyView(v0), AnyView(v1), AnyView(v2), AnyView(v3), AnyView(v4)]
     }
+    #endif
 }
