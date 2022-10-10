@@ -1,4 +1,5 @@
-#if DEBUG
+import MultiModal
+import PlaygroundSupport
 import SwiftUI
 
 struct WithoutView: View {
@@ -57,11 +58,9 @@ struct WithView: View {
     }
 }
 
-struct MultiModalPreview: PreviewProvider {
-    static var previews: some View {
-        WithoutView().previewDisplayName("Without MultiModal")
-        WithView().previewDisplayName("With MultiModal")
-    }
-}
-#endif
-
+let view = UIHostingController(
+//    rootView: WithoutView()
+    rootView: WithView()
+)
+PlaygroundPage.current.needsIndefiniteExecution = true
+PlaygroundPage.current.liveView = view
