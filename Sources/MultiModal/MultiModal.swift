@@ -16,6 +16,7 @@ extension View {
     /// }
     /// ```
     #if compiler(>=5.7)
+    @inlinable
     public func multiModal(
         @MultiModalBuilder _ modals: (EmptyView) -> some View
     ) -> some View {
@@ -35,10 +36,12 @@ extension View {
 @resultBuilder
 public struct MultiModalBuilder {
     #if compiler(>=5.7)
+    @inlinable
     public static func buildPartialBlock(first: some View) -> some View {
         first
     }
 
+    @inlinable
     public static func buildPartialBlock(accumulated: some View, next: some View) -> some View {
         accumulated.background(next)
     }
