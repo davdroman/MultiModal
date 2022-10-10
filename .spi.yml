@@ -1,0 +1,11 @@
+version: 1
+builder:
+  configs:
+  - platform: ios
+    scheme: MultiModal
+  - platform: macos-xcodebuild
+    scheme: MultiModal
+  - platform: tvos
+    scheme: MultiModal
+  - platform: watchos
+    scheme: MultiModal
