@@ -67,5 +67,5 @@ $ swift run -c release Benchmarks
 
 name     time        std        iterations
 ------------------------------------------
-Modifier 3083.000 ns ±  14.28 %     445848
+Modifier 2416.000 ns ±  15.72 %     571301
 ```
