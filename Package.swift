@@ -17,5 +17,14 @@ let package = Package(
     targets: [
         .target(name: "MultiModal"),
         .testTarget(name: "MultiModalTests", dependencies: ["MultiModal"]),
+
+        .executableTarget(name: "Benchmarks", dependencies: [
+            .product(name: "Benchmark", package: "swift-benchmark"),
+            .target(name: "MultiModal"),
+        ]),
     ]
 )
+
+package.dependencies = [
+    .package(url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
+]

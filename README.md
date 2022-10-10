@@ -55,3 +55,17 @@ struct MultiModalDemoView: View {
 MultiModal does not enable "nested" modals; it just enables multiple modals appearing within a view body **one at a time**. For this reason, it's recommended that your modal presentation be dependant on a source of truth that ensures only one of them is presented at any given time.
 
 Hopefully Apple will introduce support for multiple modals in a future iteration of SwiftUI, rendering this library unnecessary.
+
+## Benchmarks
+
+```
+MacBook Pro (14-inch, 2021)
+Apple M1 Pro (10 cores, 8 performance and 2 efficiency)
+32 GB Memory
+
+$ swift run -c release Benchmarks
+
+name     time        std        iterations
+------------------------------------------
+Modifier 3083.000 ns ±  14.28 %     445848
+```
