@@ -1,3 +1,6 @@
+> # Obsoleted
+> This library is obsoleted in favor of properly modeling the navigation domain using enums along with [swiftui-navigation](https://github.com/pointfreeco/swiftui-navigation).
+
 # MultiModal
 
 ![CI](https://github.com/davdroman/MultiModal/workflows/CI/badge.svg)
